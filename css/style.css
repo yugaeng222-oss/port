@@ -14,6 +14,10 @@ html.lenis {
     height: auto;
 }
 
+
+body{width: 1920px;}
+
+
 .lenis.lenis-smooth {
     scroll-behavior: auto;
 }
@@ -1434,10 +1438,10 @@ body, html {
 /* 1. 목업 뒤 파란색 배경 박스 */
 .s6-bg-box {
     position: absolute;
-    right: 0;
+    right: -255px;
     top: 50%;
     transform: translateY(-50%);
-    width: 90%; /* 박스의 너비 */
+    width: 120%; /* 박스의 너비 */
     height: 80%; /* 박스의 높이 */
     background: #4A6CF7; /* 원하는 배경색 (참고 이미지는 블루 계열) */
     border-radius: 40px 0 0 40px; /* 왼쪽만 둥글게 */
@@ -2931,7 +2935,7 @@ align-items: start;}
  /* 요청 규격 */
     height: 665px; /* 요청 규격 */
     border-radius: 22px; /* 요청 Radius */
-    background: #f8fbff
+    background: #f8fbff;
     overflow: hidden;
     box-shadow: 0 30px 50px rgba(0, 0, 0, 0.1);
 }
@@ -3288,6 +3292,8 @@ align-items: start;}
     gap: 100px;
 }
 
+
+
 /* 좌측 목업 스타일 */
 .s6-slide.slide12 .s6-mockup-section {
     flex: 1;
@@ -3296,7 +3302,7 @@ align-items: start;}
 }
 
 .s6-slide.slide12 .as-is-mockup img {
-    width: 300px;
+    width: 393px;
     filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
 }
 
@@ -3312,6 +3318,41 @@ align-items: start;}
     display: flex;
     flex-direction: column;
     gap: 60px;
+}
+
+
+.s6-slide.slide12 .s6-content-left {
+    flex: 0 0 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+
+
+.s6-slide.slide12 .s6-header .s6-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0B91EA;
+    margin-bottom: 10px;
+    display: block;
+    text-align: right;
+}
+
+.s6-slide.slide12 .s6-header .s6-title {
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.s6-slide.slide12 .s6-header .s6-subtitle {
+    font-size: 24px;
+    color: #0B91EA;
+    margin-bottom: 60px;
+    text-align: right;
 }
 
 .s6-slide.slide12 .info-group .label {
