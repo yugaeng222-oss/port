@@ -772,7 +772,7 @@ body, html {
 /* 두 번째 슬라이드: 상세 정보 */
 /* slide2 컨테이너 내부 정렬 */
 
-.slide2{
+.s5-slide .slide2{
 /* linear-gradient로 어둡게 조절 (0.5는 50%, 0.3은 30%) */
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                 url('../images/5-2 bg.png') no-repeat center center / cover;}
@@ -1205,7 +1205,7 @@ body, html {
     padding: 60px 0;
 }
 /* icannote */
-.slide12 {
+.s5-slide.slide12 {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                 url('/images/5-12bg.png') no-repeat center center / cover;
 }
@@ -1381,7 +1381,7 @@ body, html {
 }
 
 /* 개요(Overview) 스타일 */
-.s6-overview .description {
+.s6-slide.slide2 .s6-overview .description {
     font-size: 16px;
     line-height: 2.0;
     color: #000;
@@ -2722,7 +2722,6 @@ align-items: start;}
     height: 60px;
     border-radius: 12px;
     overflow: hidden;
-    background-color: #fff; /* 로고 배경색 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3271,131 +3270,164 @@ align-items: start;}
     .s6-slide.slide11 .s6-app-item { width: 45%; }
 }
 
-/* --- [Slide 12] Ginseng Product Design 레이아웃 --- */
+/* 슬라이드 전체 */
 .s6-slide.slide12 {
-    background: #a5a298; /* 원본 이미지의 차분한 배경색 */
-    background-image: linear-gradient(rgba(165, 162, 152, 0.8), rgba(165, 162, 152, 0.8)), 
-                      url('images/ginseng_bg.jpg'); /* 배경에 홍삼 이미지 깔기 */
-    background-size: cover;
-    background-position: center;
-    color: #333;
-    padding: 80px 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff!important;
+    overflow: hidden;
+    position: relative;
 }
 
 .s6-slide.slide12 .s6-inner {
-    width: 90%;
+     width: 90%;
     max-width: 1400px;
-    margin: 0 auto;
+    height: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 100px;
-}
+    position: relative;
+    z-index: 10;}
 
-
-
-/* 좌측 목업 스타일 */
+/* [왼쪽 섹션] 보라색 박스와 이미지 */
 .s6-slide.slide12 .s6-mockup-section {
-    flex: 1;
+       flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative; /* 내부 요소들의 절대 위치 기준 */
+    height: 100%;
+}
+
+/* 왼쪽에서 튀어나오는 보라색 박스 */
+.s6-slide.slide12 .s6-bg-box {
+    position: absolute;
+    right: 225px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120%;
+    height: 80%;
+    background: #4A6CF7;
+    border-radius:40px;
+    z-index: 1;
+    overflow: hidden;
+    display: flex
+;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+}
+
+/* 박스 안의 큰 투명 글씨 */
+.s6-slide.slide12 .s6-bg-text {
+  font-size: 180px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* 핸드폰 이미지 */
+.s6-slide.slide12 .as-is-mockup {
+    position: relative;
+    z-index: 10;
+    margin-left: 80px; /* 박스 시작점보다 안쪽으로 배치 */
 }
 
 .s6-slide.slide12 .as-is-mockup img {
-    width: 393px;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    height: auto;
+     width: 100%;
+     max-width: 450px;
+     z-index: 5;
+     position: relative;
+     filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4));
+    transform: translateX(20px);
 }
 
-.s6-slide.slide12 .iphone-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* 우측 정보 영역 스타일 */
-.s6-slide.slide12 .s6-info-section {
-    flex: 1.2;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-}
-
-
-.s6-slide.slide12 .s6-content-left {
-    flex: 0 0 450px;
+/* [오른쪽 섹션] 텍스트 정보 영역 */
+.s6-slide.slide12 .s6-content-right {
+   flex: 0 0 450px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: left;
-}
-
-
-.s6-slide.slide12 .s6-header .s6-number {
-    font-size: 24px;
-    font-weight: 800;
-    color: #0B91EA;
-    margin-bottom: 10px;
-    display: block;
     text-align: right;
+
 }
 
-.s6-slide.slide12 .s6-header .s6-title {
-    font-size: 64px;
-    font-weight: 800;
+.s6-slide.slide12 .s6-number { 
+    display: block;
+    color: #5D7CFF; 
+    font-weight: 800; 
+    font-size: 24px; 
+    margin-bottom: 10px;
+}
+
+.s6-slide.slide12 .s6-title { 
+    font-size: 60px; 
+    font-weight: 900; 
     letter-spacing: -2px;
-    margin-bottom: 10px;
-    text-align: right;
+    margin-bottom: 10px; 
 }
 
-.s6-slide.slide12 .s6-header .s6-subtitle {
-    font-size: 24px;
-    color: #0B91EA;
-    margin-bottom: 60px;
-    text-align: right;
+.s6-slide.slide12 .s6-subtitle { 
+    color: #5D7CFF; 
+    font-size: 18px; 
+    font-weight: 600;
+    margin-bottom: 40px; 
 }
 
-.s6-slide.slide12 .info-group .label {
-    font-size: 20px;
-    font-weight: 700;
-    color: #4b4841; /* 어두운 브라운/그레이 */
-    letter-spacing: 1px;
-    margin-bottom: 25px;
+.s6-slide.slide12 .label { 
+    display: block; 
+    color: #bbb; 
+    font-size: 12px; 
+    font-weight: 800; 
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.s6-slide.slide12 .value { 
+    font-size: 16px; 
+    line-height: 1.6; 
+    font-weight: 600; 
+    margin-bottom: 30px;
     display: block;
 }
 
-/* 키워드 태그 스타일 */
-.s6-slide.slide12 .tags {
+.s6-slide.slide12 .tool-icons { 
+    display: flex; 
+    gap: 12px; 
+    margin-top: 10px;
+    justify-content: end;
+}
+
+.s6-slide.slide12 .tool-icons img { 
+    width: 34px; 
+    height: 34px; 
+    object-fit: contain;
+}
+
+.s6-slide.slide12 .s6-overview {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-end; /* 안쪽 요소들을 오른쪽으로 밀기 */
+    text-align: right;     /* 텍스트 글자 자체를 오른쪽 정렬 */
 }
 
-.s6-slide.slide12 .tags span {
-    border: 1px solid #4b4841;
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #4b4841;
-}
-
-/* 컨셉 본문 스타일 */
-.s6-slide.slide12 .concept-content p {
-    font-size: 17px;
-    line-height: 1.8;
-    color: #4b4841;
-    margin-bottom: 30px;
+.s6-slide.slide12 .s6-overview .description {
+    font-size: 16px;
+    line-height: 2.0;
+    color: #000;
     word-break: keep-all;
-    text-align: justify;
+    max-width: 400px; /* 기존 유지 */
 }
-
-/* 반응형 모바일 처리 */
-@media (max-width: 1100px) {
-    .s6-slide.slide12 .s6-inner { flex-direction: column; text-align: center; gap: 50px; }
-    .s6-slide.slide12 .tags { justify-content: center; }
-    .s6-slide.slide12 .iphone-frame { width: 280px; height: 570px; }
-}
-
 /* --- [Slide 13] iPhone Mockup Background 레이아웃 --- */
 .s6-slide.slide13 {
     /* 이미지를 배경으로 설정 */
@@ -3576,9 +3608,9 @@ align-items: start;}
 }
 
 /* --- [Slide 3] Footer Design 레이아웃 --- */
-.s7-slide.slide3 {
+/* .s7-slide.slide3 {
     background-color: #f5f5f5; /* 아주 연한 그레이 배경 */
-    color: #333;
+    /* color: #333;
     padding: 60px 0;
 }
 
@@ -3592,20 +3624,20 @@ align-items: start;}
 }
 
 /* 상단 헤더 영역 */
-.s7-slide.slide3 .s7-header-area {
+/* .s7-slide.slide3 .s7-header-area {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     border-bottom: 1px solid #ddd;
     padding-bottom: 30px;
-}
+} */
 
-.s7-slide.slide3 .header-left .label {
+/* .s7-slide.slide3 .header-left .label {
     font-size: 14px;
     color: #ff4d4d; /* 포인트 핑크/레드 컬러 */
-    font-weight: 700;
-}
-
+    /* font-weight: 700; */
+/* } */
+/* 
 .s7-slide.slide3 .header-left .title {
     font-size: 32px;
     font-weight: 800;
@@ -3615,10 +3647,10 @@ align-items: start;}
 .s7-slide.slide3 .header-left .sub-desc {
     font-size: 16px;
     color: #888;
-}
+} */ */
 
 /* 우측 기여도 및 설명 */
-.s7-slide.slide3 .header-right {
+/* .s7-slide.slide3 .header-right {
     text-align: right;
     max-width: 600px;
 }
@@ -3643,10 +3675,10 @@ align-items: start;}
     line-height: 1.6;
     color: #999;
     word-break: keep-all;
-}
+} */
 
 /* 하단 배너 쇼케이스 그리드 */
-.s7-slide.slide3 .s7-footer-showcase {
+/* .s7-slide.slide3 .s7-footer-showcase {
     display: flex;
     gap: 30px;
     align-items: flex-start;
@@ -3669,7 +3701,7 @@ align-items: start;}
 .s7-slide.slide3 .showcase-col img {
     width: 100%;
     border-radius: 4px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0  5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease;
 }
 
@@ -3678,12 +3710,11 @@ align-items: start;}
 }
 
 /* 반응형 처리 */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .s7-slide.slide3 .s7-header-area { flex-direction: column; align-items: flex-start; gap: 20px; }
     .s7-slide.slide3 .header-right { text-align: left; }
     .s7-slide.slide3 .meta-row { margin-left: 0; }
-    .s7-slide.slide3 .s7-footer-showcase { flex-direction: column; }
-}
+    .s7-slide.slide3 .s7-footer-showcase { flex-direction: column; }} */ 
 
 /* --- [Slide 4] Hyupsung University SNS Supporters --- */
 .s7-slide.slide4 {
